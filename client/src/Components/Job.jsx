@@ -13,7 +13,7 @@ const Job = ({
   jobLocation,
   jobType,
   createdAt,
-  jobstatus,
+  jobStatus,
 }) => {
   const date = day(createdAt).format("MMM Do, YYYY");
 
@@ -31,7 +31,7 @@ const Job = ({
           <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
           <JobInfo icon={<FaCalendarAlt />} text={date} />
           <JobInfo icon={<FaBriefcase />} text={jobType} />
-          <div className={`status ${jobstatus}`}>{jobstatus}</div>
+          <div className={`status ${jobStatus}`}>{jobStatus}</div>
         </div>
 
         <footer className="actions">

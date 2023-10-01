@@ -5,12 +5,12 @@ const JobSchema = new mongoose.Schema(
   {
     company: String,
     position: String,
-    JobStatus: {
+    jobStatus: {
       type: String,
       enum: Object.values(JOB_STATUS),
       default: JOB_STATUS.PENDING,
     },
-    JobType: {
+    jobType: {
       type: String,
       enum: Object.values(JOB_TYPE),
       default: JOB_TYPE.FULL_TIME,
