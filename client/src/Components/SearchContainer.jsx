@@ -6,8 +6,19 @@ import { useAllJobsContext } from "../pages/AllJobs";
 
 const SearchContainer = () => {
   const { searchValues } = useAllJobsContext();
-  console.log(searchValues);
+  const { search, jobStatus, jobTye, sort } = searchValues;
   const submit = useSubmit();
+
+  const debounce = (onChange) => {
+    let timeout;
+    return (e) => {
+      const form = e.currentTarget.form;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        onChange(form);
+      }, 2000);
+    };
+  };
   return (
     <Wrapper>
       <Form className="form">
@@ -16,10 +27,10 @@ const SearchContainer = () => {
           <FormRow
             type="search"
             name="search"
-            defaultvalue="a"
-            onChange={(e) => {
-              submit(e.currentTarget.form);
-            }}
+            defaultvalue={search}
+            onChange={debounce((form) => {
+              submit(form);
+            })}
           />
           <FormRowSelect
             labelText="job status"
