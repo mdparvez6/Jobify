@@ -37,10 +37,6 @@ const Landing = () => {
             progresses. <span>Manage interviews</span>, <span>responses</span>,
             and <span>decisions with ease</span>.
           </p>
-          <p>
-            📅 Stay on Schedule: Set reminders for deadlines and interviews.
-            Keep your job search organized.
-          </p>
           <Link to="/register" className="btn register-link">
             Register
           </Link>
