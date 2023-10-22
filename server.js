@@ -21,14 +21,13 @@ import { fileURLToPath } from "url";
 import path from "path";
 import cloudinary from "cloudinary";
 
+import helmet from "helmet";
+import mongoSanitize from "express-mongo-sanitize";
+
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_API_KEY,
   api_secret: process.env.CLOUD_API_SECRET,
-});
-
-app.get("/api/v1/test", (req, res) => {
-  res.json({ msg: "test route" });
 });
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -39,6 +38,9 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.static(path.resolve(__dirname, "./client/dist")));
 app.use(cookieParser());
 app.use(express.json());
+
+app.use(helmet());
+app.use(mangosantize());
 
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
 app.use("/api/v1/users", authenticateUser, userRouer);
