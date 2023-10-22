@@ -40,7 +40,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(helmet());
-app.use(mangosantize());
+app.use(mongoSanitize());
 
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
 app.use("/api/v1/users", authenticateUser, userRouer);
